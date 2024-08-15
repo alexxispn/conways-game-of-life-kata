@@ -5,7 +5,10 @@ export class Board {
     return new Board(state)
   }
 
-  private constructor(private state: boolean[][]) {}
+  private constructor(
+    private state: boolean[][],
+    private cells: Cell[][],
+  ) {}
 
   getCellAt(coordinates: Coordinates): boolean {
     return coordinates.getFromMatrix(this.state) ?? false
