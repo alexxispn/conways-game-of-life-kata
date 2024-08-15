@@ -10,23 +10,21 @@ export class GameOfLife {
 
   nextGeneration() {
     const newBoard = this.board.clone()
-    const neighbours = this.board.getNeighbours(Coordinates.at(1, 1))
+    const coordinates = Coordinates.at(1, 1)
+    const neighbours = this.board.getNeighbours(coordinates)
     const aliveNeighbours = neighbours.filter((cell) => cell).length
+
     if (aliveNeighbours === 0) {
-      newBoard.setValue(1, 1, false)
-      this.board = newBoard
-      return
+      newBoard.setValue(coordinates, false)
     }
     if (aliveNeighbours === 3) {
-      newBoard.setValue(1, 1, true)
-      this.board = newBoard
-      return
+      newBoard.setValue(coordinates, true)
     }
     if (aliveNeighbours > 3) {
-      newBoard.setValue(1, 1, false)
-      this.board = newBoard
-      return
+      newBoard.setValue(coordinates, false)
     }
+
+    this.board = newBoard
   }
 
   toString() {

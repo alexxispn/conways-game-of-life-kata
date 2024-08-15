@@ -11,8 +11,8 @@ export class Board {
     return coordinates.getFromMatrix(this.state) ?? false
   }
 
-  setValue(CoordinateY: number, CoordinateX: number, value: boolean) {
-    this.state[CoordinateY][CoordinateX] = value
+  setValue(coordinates: Coordinates, value: boolean) {
+    coordinates.setAtMatrix(this.state, value)
   }
 
   clone() {

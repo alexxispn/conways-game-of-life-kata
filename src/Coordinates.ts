@@ -13,6 +13,11 @@ export class Coordinates {
     return row[this.x] ?? null
   }
 
+  setAtMatrix<T>(matrix: T[][], value: T) {
+    const row = matrix[this.y] ?? []
+    row[this.x] = value
+  }
+
   getNeighbours() {
     return [
       Coordinates.at(this.y - 1, this.x - 1),
