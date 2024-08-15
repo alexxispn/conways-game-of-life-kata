@@ -11,14 +11,6 @@ export class Board {
     return coordinates.getFromMatrix(this.state) ?? false
   }
 
-  setValue(coordinates: Coordinates, value: boolean) {
-    coordinates.setAtMatrix(this.state, value)
-  }
-
-  clone() {
-    return new Board(structuredClone(this.state))
-  }
-
   getNeighbours(coordinates: Coordinates) {
     return coordinates.getNeighbours().map((coordinates) => this.getCellAt(coordinates))
   }
