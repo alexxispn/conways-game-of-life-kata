@@ -4,4 +4,8 @@ export class GameOfLife {
   static from(state: boolean[][]) {
     return new GameOfLife(state)
   }
+
+  nextGeneration() {
+
+  }
 }
