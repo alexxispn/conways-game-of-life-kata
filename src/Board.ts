@@ -1,8 +1,10 @@
 import { Coordinates } from "./Coordinates.js"
+import { Cell } from "./Cell.js"
 
 export class Board {
   static from(state: boolean[][]) {
-    return new Board(state)
+    const cells = Coordinates.map(state, (status) => Cell.from(status))
+    return new Board(state, cells)
   }
 
   private constructor(
@@ -19,7 +21,7 @@ export class Board {
   }
 
   map(fn: (cell: boolean, coordinates: Coordinates) => boolean) {
-    return new Board(this.state.map((row, y) => row.map((cell, x) => fn(cell, Coordinates.at(y, x)))))
+    return new Board(Coordinates.map(this.state, fn), this.cells)
   }
 
   toString() {

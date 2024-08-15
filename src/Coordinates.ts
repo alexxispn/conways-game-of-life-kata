@@ -13,9 +13,8 @@ export class Coordinates {
     return row[this.x] ?? null
   }
 
-  setAtMatrix<T>(matrix: T[][], value: T) {
-    const row = matrix[this.y] ?? []
-    row[this.x] = value
+  public static map<T, U>(matrix: T[][], fn: (cell: T, coordinates: Coordinates) => U) {
+    return matrix.map((row, y) => row.map((cell, x) => fn(cell, Coordinates.at(y, x))))
   }
 
   getNeighbours() {
