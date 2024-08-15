@@ -40,5 +40,29 @@ describe("Board", () => {
 
       expect(cell).toBe(false)
     })
+
+    it("returns false for out of bounds cells horizontally in positive axis", () => {
+      const game = Board.from([
+        [true, true, true],
+        [true, true, true],
+        [true, true, true],
+      ])
+
+      const cell = game.getCellAt(0, 20)
+
+      expect(cell).toBe(false)
+    })
+
+    it("returns false for out of bounds cells horizontally in negative axis", () => {
+      const game = Board.from([
+        [true, true, true],
+        [true, true, true],
+        [true, true, true],
+      ])
+
+      const cell = game.getCellAt(0, -20)
+
+      expect(cell).toBe(false)
+    })
   })
 })

@@ -6,13 +6,12 @@ export class Board {
   private constructor(private state: boolean[][]) {}
 
   getCellAt(CoordinateY: number, CoordinateX: number): boolean {
-    if (CoordinateX < 0 || CoordinateY < 0) {
-      return false
-    }
-    if (CoordinateY >= this.state.length) {
-      return false
-    }
-    return this.state[CoordinateY][CoordinateX]
+    const row = this.getRow(CoordinateY)
+    return row[CoordinateX] ?? false
+  }
+
+  private getRow(CoordinateY: number) {
+    return this.state[CoordinateY] ?? []
   }
 
   setValue(CoordinateY: number, CoordinateX: number, value: boolean) {
