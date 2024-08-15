@@ -1,11 +1,10 @@
 import { GameOfLife } from "./GameOfLife.js"
 
 export class GameLoader {
-  parse(string: string): GameOfLife {
-    return GameOfLife.from([
-      [false, false, false],
-      [false, false, false],
-      [false, false, false],
-    ])
+  parse(input: string): GameOfLife {
+    const lines = input.split("\n")
+    const cells = lines.map((line) => line.split("").map((stringCell) => stringCell === "o"))
+
+    return GameOfLife.from(cells)
   }
 }
