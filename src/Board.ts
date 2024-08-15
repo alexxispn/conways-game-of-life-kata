@@ -21,7 +21,7 @@ export class Board {
   }
 
   map(fn: (cell: boolean, coordinates: Coordinates) => boolean) {
-    return new Board(Coordinates.map(this.state, fn), this.cells)
+    return Board.from(Coordinates.map(this.state, fn))
   }
 
   toString() {
