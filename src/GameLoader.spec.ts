@@ -30,4 +30,18 @@ describe("GameLoader", () => {
 
     expect(gameOfLife).toEqual(expected)
   })
+
+  it("loads a game with an empty final line", () => {
+    const input = "ooo\nooo\nooo\n"
+    const gameLoader = new GameLoader()
+    const gameOfLife = gameLoader.parse(input)
+
+    const expected = GameOfLife.from([
+      [true, true, true],
+      [true, true, true],
+      [true, true, true],
+    ])
+
+    expect(gameOfLife).toEqual(expected)
+  })
 })
