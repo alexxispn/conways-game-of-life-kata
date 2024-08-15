@@ -99,5 +99,23 @@ describe("GameOfLife", () => {
 
       expect(game).toEqual(expectedGame);
     });
+
+    it("makes a cell die due to overcrowd", () => {
+      const game = GameOfLife.from([
+        [true, true, false],
+        [false, true, false],
+        [false, true, true]
+      ]);
+
+      game.nextGeneration();
+
+      const expectedGame = GameOfLife.from([
+        [true, true, false],
+        [false, false, false],
+        [false, true, true]
+      ]);
+
+      expect(game).toEqual(expectedGame);
+    });
   });
 });
