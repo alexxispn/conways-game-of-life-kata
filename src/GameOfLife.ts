@@ -1,4 +1,5 @@
 import { Board } from "./Board.js"
+import { Cell } from "./Cell.js"
 
 export class GameOfLife {
   private constructor(private board: Board) {}
@@ -14,16 +15,16 @@ export class GameOfLife {
     })
   }
 
-  private getNextState(neighbors: boolean[], cell: boolean) {
-    const aliveNeighbours = neighbors.filter((cell) => cell).length
+  private getNextState(neighbors: Cell[], cell: Cell): Cell {
+    const aliveNeighbours = neighbors.filter((cell) => cell.isAlive()).length
     if (aliveNeighbours === 0) {
-      return false
+      return Cell.dead()
     }
     if (aliveNeighbours === 3) {
-      return true
+      return Cell.alive()
     }
     if (aliveNeighbours > 3) {
-      return false
+      return Cell.dead()
     }
     return cell
   }

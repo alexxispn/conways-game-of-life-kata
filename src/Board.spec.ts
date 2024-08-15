@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest"
 import { Board } from "./Board.js"
+import { Cell } from "./Cell.js"
 import { Coordinates } from "./Coordinates.js"
 
 describe("Board", () => {
@@ -13,7 +14,16 @@ describe("Board", () => {
 
       const neighbours = game.getNeighbours(Coordinates.at(1, 1))
 
-      expect(neighbours).toEqual([false, false, false, false, false, false, false, false])
+      expect(neighbours).toEqual([
+        Cell.dead(),
+        Cell.dead(),
+        Cell.dead(),
+        Cell.dead(),
+        Cell.dead(),
+        Cell.dead(),
+        Cell.dead(),
+        Cell.dead(),
+      ])
     })
 
     it("obtains neighbours from the first left cell", () => {
@@ -25,7 +35,16 @@ describe("Board", () => {
 
       const neighbours = game.getNeighbours(Coordinates.at(0, 0))
 
-      expect(neighbours).toEqual([false, false, false, false, false, false, false, true])
+      expect(neighbours).toEqual([
+        Cell.dead(),
+        Cell.dead(),
+        Cell.dead(),
+        Cell.dead(),
+        Cell.dead(),
+        Cell.dead(),
+        Cell.dead(),
+        Cell.alive(),
+      ])
     })
   })
 
@@ -39,7 +58,7 @@ describe("Board", () => {
 
       const cell = game.getCellAt(Coordinates.at(20, 0))
 
-      expect(cell).toBe(false)
+      expect(cell).toEqual(Cell.dead())
     })
 
     it("returns false for out of bounds cells horizontally in positive axis", () => {
@@ -51,7 +70,7 @@ describe("Board", () => {
 
       const cell = game.getCellAt(Coordinates.at(0, 20))
 
-      expect(cell).toBe(false)
+      expect(cell).toEqual(Cell.dead())
     })
 
     it("returns false for out of bounds cells horizontally in negative axis", () => {
@@ -63,7 +82,7 @@ describe("Board", () => {
 
       const cell = game.getCellAt(Coordinates.at(0, -20))
 
-      expect(cell).toBe(false)
+      expect(cell).toEqual(Cell.dead())
     })
   })
 })

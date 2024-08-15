@@ -4,29 +4,26 @@ import { Coordinates } from "./Coordinates.js"
 export class Board {
   static from(state: boolean[][]) {
     const cells = Coordinates.map(state, (status) => Cell.from(status))
-    return new Board(state, cells)
+    return new Board(cells)
   }
 
-  private constructor(
-    private state: boolean[][],
-    private cells: Cell[][],
-  ) {}
+  private constructor(private cells: Cell[][]) {}
 
-  getCellAt(coordinates: Coordinates): boolean {
-    return coordinates.getFromMatrix(this.cells)?.getValue() ?? false
+  getCellAt(coordinates: Coordinates): Cell {
+    return coordinates.getFromMatrix(this.cells) ?? Cell.dead()
   }
 
-  getNeighbours(coordinates: Coordinates) {
+  getNeighbours(coordinates: Coordinates): Cell[] {
     return coordinates.getNeighbours().map((coordinates) => this.getCellAt(coordinates))
   }
 
-  map(fn: (cell: boolean, coordinates: Coordinates) => boolean) {
-    return Board.from(Coordinates.map(this.state, fn))
+  map(fn: (cell: Cell, coordinates: Coordinates) => Cell) {
+    return new Board(Coordinates.map(this.cells, fn))
   }
 
   toString() {
     return this.cells
-      .map((cells) => cells.map((cell) => (cell.getValue() ? "◽️" : "◼️")))
+      .map((cells) => cells.map((cell) => (cell.isAlive() ? "◽️" : "◼️")))
       .map((val) => val.join(""))
       .join("\n")
   }

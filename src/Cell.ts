@@ -1,11 +1,19 @@
 export class Cell {
-  private constructor(private status: boolean) {}
+  private constructor(private alive: boolean) {}
 
   static from(status: boolean) {
     return new Cell(status)
   }
 
-  getValue() {
-    return this.status
+  static dead() {
+    return new Cell(false)
+  }
+
+  static alive() {
+    return new Cell(true)
+  }
+
+  isAlive() {
+    return this.alive
   }
 }
