@@ -7,16 +7,8 @@ export class GameOfLife {
   }
 
   nextGeneration() {
-    const state = [
-      [this.state[0][0], this.state[0][1], this.state[0][2]],
-      [this.state[1][0], this.state[1][1], this.state[1][2]],
-      [this.state[2][0], this.state[2][1], this.state[2][2]]
-    ];
-    const neighbours = [
-      this.state[0][0], this.state[0][1], this.state[0][2],
-      this.state[1][0], this.state[1][2],
-      this.state[2][0], this.state[2][1], this.state[2][2]
-    ];
+    const state = structuredClone(this.state);
+    const neighbours = this.getNeighbours(1, 1);
     const aliveNeighbours = neighbours.filter(cell => cell).length;
     if (aliveNeighbours === 0) {
       state[1][1] = false;
@@ -33,6 +25,21 @@ export class GameOfLife {
       this.state = state;
       return;
     }
+  }
+
+  getNeighbours(CoordinateY: number, CoordinateX: number) {
+    return [
+      this.getCellAt(CoordinateY - 1, CoordinateX - 1), this.getCellAt(CoordinateY - 1, CoordinateX), this.getCellAt(CoordinateY - 1, CoordinateX + 1),
+      this.getCellAt(CoordinateY, CoordinateX - 1), this.getCellAt(CoordinateY, CoordinateX + 1),
+      this.getCellAt(CoordinateY + 1, CoordinateX - 1), this.getCellAt(CoordinateY + 1, CoordinateX), this.getCellAt(CoordinateY + 1, CoordinateX + 1)
+    ];
+  }
+
+  private getCellAt(CoordinateY: number, CoordinateX: number): boolean {
+    if (CoordinateX < 0 || CoordinateY < 0) {
+      return false;
+    }
+    return this.state[CoordinateY][CoordinateX];
   }
 
   toString() {
