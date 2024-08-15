@@ -6,11 +6,19 @@ export class GameOfLife {
   }
 
   nextGeneration() {
-    this.state = [
-      [false, false, false],
-      [false, false, false],
-      [false, false, false],
-    ]
+    if (this.state[2][2]) {
+      this.state = [
+        [false, false, false],
+        [false, true, true],
+        [false, true, true],
+      ]
+    } else {
+      this.state = [
+        [false, false, false],
+        [false, false, false],
+        [false, false, false],
+      ]
+    }
   }
 
   toString() {
