@@ -19,10 +19,8 @@ export class Board {
     return new Board(structuredClone(this.state))
   }
 
-  getNeighbours(CoordinateY: number, CoordinateX: number) {
-    return Coordinates.at(CoordinateY, CoordinateX)
-      .getNeighbours()
-      .map((coordinates) => this.getCellAt(coordinates))
+  getNeighbours(coordinates: Coordinates) {
+    return coordinates.getNeighbours().map((coordinates) => this.getCellAt(coordinates))
   }
 
   toString() {

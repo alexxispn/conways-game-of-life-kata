@@ -11,7 +11,7 @@ describe("Board", () => {
         [false, false, false],
       ])
 
-      const neighbours = game.getNeighbours(1, 1)
+      const neighbours = game.getNeighbours(Coordinates.at(1, 1))
 
       expect(neighbours).toEqual([false, false, false, false, false, false, false, false])
     })
@@ -23,7 +23,7 @@ describe("Board", () => {
         [false, false, false],
       ])
 
-      const neighbours = game.getNeighbours(0, 0)
+      const neighbours = game.getNeighbours(Coordinates.at(0, 0))
 
       expect(neighbours).toEqual([false, false, false, false, false, false, false, true])
     })

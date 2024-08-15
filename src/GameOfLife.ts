@@ -1,4 +1,5 @@
 import { Board } from "./Board.js"
+import { Coordinates } from "./Coordinates.js"
 
 export class GameOfLife {
   private constructor(private board: Board) {}
@@ -9,7 +10,7 @@ export class GameOfLife {
 
   nextGeneration() {
     const newBoard = this.board.clone()
-    const neighbours = this.board.getNeighbours(1, 1)
+    const neighbours = this.board.getNeighbours(Coordinates.at(1, 1))
     const aliveNeighbours = neighbours.filter((cell) => cell).length
     if (aliveNeighbours === 0) {
       newBoard.setValue(1, 1, false)
