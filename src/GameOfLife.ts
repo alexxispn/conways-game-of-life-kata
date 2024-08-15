@@ -10,10 +10,6 @@ export class GameOfLife {
   }
 
   toString() {
-    if (this.state[0][0]) {
-      return "◽️◽️◽️\n◽️◽️◽️\n◽️◽️◽️"
-    }
-
-    return "◼️◼️◼️\n◼️◼️◼️\n◼️◼️◼️"
+    return this.state.map(cells => cells.map(cell => cell ? "◽️" : "◼️")).map(val => val.join("")).join("\n")
   }
 }
