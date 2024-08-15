@@ -1,35 +1,55 @@
-export class Cell {
-  private constructor(private alive: boolean) {}
+export abstract class Cell {
+  protected constructor() {}
 
   static from(status: boolean) {
-    return new Cell(status)
+    return status ? Cell.alive() : Cell.dead()
   }
 
   static dead() {
-    return new Cell(false)
+    return new DeadCell()
   }
 
   static alive() {
-    return new Cell(true)
+    return new AliveCell()
   }
 
-  isAlive() {
-    return this.alive
+  abstract isAlive(): boolean
+
+  abstract toString(): string
+
+  abstract getNextGeneration(neighbors: Cell[]): Cell
+}
+
+class DeadCell extends Cell {
+  isAlive(): boolean {
+    return false
   }
 
-  toString() {
-    return this.isAlive() ? "◽️" : "◼️"
+  toString(): string {
+    return "◼️"
   }
 
-  getNextGeneration(neighbors: Cell[]) {
+  getNextGeneration(neighbors: Cell[]): Cell {
     const aliveNeighbours = neighbors.filter((cell) => cell.isAlive()).length
-    if (aliveNeighbours < 2) {
-      return Cell.dead()
-    }
     if (aliveNeighbours === 3) {
       return Cell.alive()
     }
-    if (aliveNeighbours > 3) {
+    return this
+  }
+}
+
+class AliveCell extends Cell {
+  isAlive(): boolean {
+    return true
+  }
+
+  toString(): string {
+    return "◽️"
+  }
+
+  getNextGeneration(neighbors: Cell[]): Cell {
+    const aliveNeighbours = neighbors.filter((cell) => cell.isAlive()).length
+    if (aliveNeighbours < 2 || aliveNeighbours > 3) {
       return Cell.dead()
     }
     return this
