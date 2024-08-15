@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest"
 import { Board } from "./Board.js"
+import { Coordinates } from "./Coordinates.js"
 
 describe("Board", () => {
   describe("getNeighbours", () => {
@@ -36,7 +37,7 @@ describe("Board", () => {
         [true, true, true],
       ])
 
-      const cell = game.getCellAt(20, 0)
+      const cell = game.getCellAt(Coordinates.at(20, 0))
 
       expect(cell).toBe(false)
     })
@@ -48,7 +49,7 @@ describe("Board", () => {
         [true, true, true],
       ])
 
-      const cell = game.getCellAt(0, 20)
+      const cell = game.getCellAt(Coordinates.at(0, 20))
 
       expect(cell).toBe(false)
     })
@@ -60,7 +61,7 @@ describe("Board", () => {
         [true, true, true],
       ])
 
-      const cell = game.getCellAt(0, -20)
+      const cell = game.getCellAt(Coordinates.at(0, -20))
 
       expect(cell).toBe(false)
     })

@@ -1,3 +1,5 @@
+import { Coordinates } from "./Coordinates.js"
+
 export class Board {
   static from(state: boolean[][]) {
     return new Board(state)
@@ -5,13 +7,8 @@ export class Board {
 
   private constructor(private state: boolean[][]) {}
 
-  getCellAt(CoordinateY: number, CoordinateX: number): boolean {
-    const row = this.getRow(CoordinateY)
-    return row[CoordinateX] ?? false
-  }
-
-  private getRow(CoordinateY: number) {
-    return this.state[CoordinateY] ?? []
+  getCellAt(coordinates: Coordinates): boolean {
+    return coordinates.getFromMatrix(this.state) ?? false
   }
 
   setValue(CoordinateY: number, CoordinateX: number, value: boolean) {
@@ -23,16 +20,9 @@ export class Board {
   }
 
   getNeighbours(CoordinateY: number, CoordinateX: number) {
-    return [
-      this.getCellAt(CoordinateY - 1, CoordinateX - 1),
-      this.getCellAt(CoordinateY - 1, CoordinateX),
-      this.getCellAt(CoordinateY - 1, CoordinateX + 1),
-      this.getCellAt(CoordinateY, CoordinateX - 1),
-      this.getCellAt(CoordinateY, CoordinateX + 1),
-      this.getCellAt(CoordinateY + 1, CoordinateX - 1),
-      this.getCellAt(CoordinateY + 1, CoordinateX),
-      this.getCellAt(CoordinateY + 1, CoordinateX + 1),
-    ]
+    return Coordinates.at(CoordinateY, CoordinateX)
+      .getNeighbours()
+      .map((coordinates) => this.getCellAt(coordinates))
   }
 
   toString() {
