@@ -8,4 +8,8 @@ export class GameOfLife {
   nextGeneration() {
 
   }
+
+  toString() {
+    return "◼️◼️◼️\n◼️◼️◼️\n◼️◼️◼️"
+  }
 }
