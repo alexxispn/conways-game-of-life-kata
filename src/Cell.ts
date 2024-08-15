@@ -23,7 +23,7 @@ export class Cell {
 
   getNextGeneration(neighbors: Cell[]) {
     const aliveNeighbours = neighbors.filter((cell) => cell.isAlive()).length
-    if (aliveNeighbours === 0) {
+    if (aliveNeighbours < 2) {
       return Cell.dead()
     }
     if (aliveNeighbours === 3) {

@@ -118,24 +118,6 @@ describe("GameOfLife", () => {
       expect(game).toEqual(expectedGame)
     })
 
-    it("makes a cell die due to overcrowd", () => {
-      const game = GameOfLife.from([
-        [false, true, false],
-        [false, true, false],
-        [false, false, false],
-      ])
-
-      game.nextGeneration()
-
-      const expectedGame = GameOfLife.from([
-        [false, true, false],
-        [false, true, false],
-        [false, false, false],
-      ])
-
-      expect(game).toEqual(expectedGame)
-    })
-
     it("makes modifications in all board cells", () => {
       const game = GameOfLife.from([
         [false, false, false],

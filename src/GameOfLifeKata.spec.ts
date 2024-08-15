@@ -8,7 +8,7 @@ import { GameOfLifeFactory } from "./GameOfLifeFactory.js"
 //   Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
 describe("GameOfLifeKata", () => {
-  it.skip("reads from a file and starts a new game of life", () => {
+  it("reads from a file and starts a new game of life", () => {
     const file = "./games/game-01.txt"
     const console: Console = { log: vi.fn() }
     const gameOfLife = new GameOfLifeFactory(console)
