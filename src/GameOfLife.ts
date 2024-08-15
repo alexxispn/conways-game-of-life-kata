@@ -10,6 +10,10 @@ export class GameOfLife {
   }
 
   toString() {
+    if (this.state[0][0]) {
+      return "◽️◽️◽️\n◽️◽️◽️\n◽️◽️◽️"
+    }
+
     return "◼️◼️◼️\n◼️◼️◼️\n◼️◼️◼️"
   }
 }

@@ -13,4 +13,16 @@ describe("GameOfLife", () => {
 
     expect(string).toBe("◼️◼️◼️\n◼️◼️◼️\n◼️◼️◼️")
   })
+
+  it("prints all cells alive game with white", () => {
+    const game = GameOfLife.from([
+      [true, true, true],
+      [true, true, true],
+      [true, true, true],
+    ])
+
+    const string = game.toString()
+
+    expect(string).toBe("◽️◽️◽️\n◽️◽️◽️\n◽️◽️◽️")
+  })
 })
