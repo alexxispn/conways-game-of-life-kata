@@ -47,13 +47,13 @@ describe("GameOfLife", () => {
 
   describe("nextGeneration", () => {
     it("makes a cell die due to under-population", () => {
-      const lonelyCellGame = GameOfLife.from([
+      const game = GameOfLife.from([
         [false, false, false],
         [false, true, false],
         [false, false, false],
       ])
 
-      lonelyCellGame.nextGeneration()
+      game.nextGeneration()
 
       const expectedGame = GameOfLife.from([
         [false, false, false],
@@ -61,7 +61,25 @@ describe("GameOfLife", () => {
         [false, false, false],
       ])
 
-      expect(lonelyCellGame).toEqual(expectedGame)
+      expect(game).toEqual(expectedGame)
+    })
+
+    it("makes no change if enough neighbours", () => {
+      const game = GameOfLife.from([
+        [false, false, false],
+        [false, true, true],
+        [false, true, true],
+      ])
+
+      game.nextGeneration()
+
+      const expectedGame = GameOfLife.from([
+        [false, false, false],
+        [false, true, true],
+        [false, true, true],
+      ])
+
+      expect(game).toEqual(expectedGame)
     })
   })
 })
