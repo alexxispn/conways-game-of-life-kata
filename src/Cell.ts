@@ -16,4 +16,8 @@ export class Cell {
   isAlive() {
     return this.alive
   }
+
+  toString() {
+    return this.isAlive() ? "◽️" : "◼️"
+  }
 }

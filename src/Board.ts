@@ -3,7 +3,7 @@ import { Coordinates } from "./Coordinates.js"
 
 export class Board {
   static from(state: boolean[][]) {
-    const cells = Coordinates.map(state, (status) => Cell.from(status))
+    const cells = Coordinates.map(state, Cell.from)
     return new Board(cells)
   }
 
@@ -23,7 +23,7 @@ export class Board {
 
   toString() {
     return this.cells
-      .map((cells) => cells.map((cell) => (cell.isAlive() ? "◽️" : "◼️")))
+      .map((cells) => cells.map((cell) => cell.toString()))
       .map((val) => val.join(""))
       .join("\n")
   }
