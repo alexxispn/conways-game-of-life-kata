@@ -81,5 +81,23 @@ describe("GameOfLife", () => {
 
       expect(game).toEqual(expectedGame)
     })
+
+    it("makes an alive cell if there are three neighbours", () => {
+      const game = GameOfLife.from([
+        [false, false, false],
+        [false, true, false],
+        [true, true, false],
+      ])
+
+      game.nextGeneration()
+
+      const expectedGame = GameOfLife.from([
+        [false, false, false],
+        [true, true, false],
+        [true, true, false],
+      ])
+
+      expect(game).toEqual(expectedGame)
+    })
   })
 })
