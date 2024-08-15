@@ -27,4 +27,18 @@ describe("Board", () => {
       expect(neighbours).toEqual([false, false, false, false, false, false, false, true])
     })
   })
+
+  describe("getCellAt", () => {
+    it("returns false for out of bounds cells", () => {
+      const game = Board.from([
+        [true, true, true],
+        [true, true, true],
+        [true, true, true],
+      ])
+
+      const cell = game.getCellAt(20, 0)
+
+      expect(cell).toBe(false)
+    })
+  })
 })

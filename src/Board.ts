@@ -9,6 +9,9 @@ export class Board {
     if (CoordinateX < 0 || CoordinateY < 0) {
       return false
     }
+    if (CoordinateY >= this.state.length) {
+      return false
+    }
     return this.state[CoordinateY][CoordinateX]
   }
 
