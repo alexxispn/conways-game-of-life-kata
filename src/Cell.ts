@@ -4,4 +4,8 @@ export class Cell {
   static from(status: boolean) {
     return new Cell(status)
   }
+
+  getValue() {
+    return this.status
+  }
 }

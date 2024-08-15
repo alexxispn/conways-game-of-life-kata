@@ -1,5 +1,5 @@
-import { Coordinates } from "./Coordinates.js"
 import { Cell } from "./Cell.js"
+import { Coordinates } from "./Coordinates.js"
 
 export class Board {
   static from(state: boolean[][]) {
@@ -13,7 +13,7 @@ export class Board {
   ) {}
 
   getCellAt(coordinates: Coordinates): boolean {
-    return coordinates.getFromMatrix(this.state) ?? false
+    return coordinates.getFromMatrix(this.cells)?.getValue() ?? false
   }
 
   getNeighbours(coordinates: Coordinates) {
@@ -25,8 +25,8 @@ export class Board {
   }
 
   toString() {
-    return this.state
-      .map((cells) => cells.map((cell) => (cell ? "◽️" : "◼️")))
+    return this.cells
+      .map((cells) => cells.map((cell) => (cell.getValue() ? "◽️" : "◼️")))
       .map((val) => val.join(""))
       .join("\n")
   }
