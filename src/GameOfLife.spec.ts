@@ -46,7 +46,7 @@ describe("GameOfLife", () => {
   //   Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
   describe("nextGeneration", () => {
-    it("an lonely cell dies due to under-population", () => {
+    it("makes a cell die due to under-population", () => {
       const lonelyCellGame = GameOfLife.from([
         [false, false, false],
         [false, true, false],
