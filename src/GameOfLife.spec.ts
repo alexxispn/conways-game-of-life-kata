@@ -154,4 +154,34 @@ describe("GameOfLife", () => {
       expect(game).toEqual(expectedGame);
     });
   });
+
+  describe("getNeighbours", () => {
+    it("obtains neighbours from the center cell", () => {
+      const game = GameOfLife.from([
+        [false, false, false],
+        [false, true, false],
+        [false, false, false]
+      ]);
+
+      const neighbours = game.getNeighbours(1, 1);
+
+      expect(neighbours).toEqual(
+        [false, false, false, false, false, false, false, false]
+      );
+    });
+
+    it("obtains neighbours from the first left cell", () => {
+      const game = GameOfLife.from([
+        [false, false, false],
+        [false, true, false],
+        [false, false, false]
+      ]);
+
+      const neighbours = game.getNeighbours(0, 0);
+
+      expect(neighbours).toEqual(
+        [false, false, false, false, false, false, false, true]
+      );
+    });
+  });
 });
