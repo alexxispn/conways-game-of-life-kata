@@ -28,6 +28,11 @@ export class GameOfLife {
       this.state = state;
       return;
     }
+    if (aliveNeighbours > 3) {
+      state[1][1] = false;
+      this.state = state;
+      return;
+    }
   }
 
   toString() {
