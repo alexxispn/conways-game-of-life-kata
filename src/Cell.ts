@@ -20,4 +20,18 @@ export class Cell {
   toString() {
     return this.isAlive() ? "◽️" : "◼️"
   }
+
+  getNextGeneration(neighbors: Cell[]) {
+    const aliveNeighbours = neighbors.filter((cell) => cell.isAlive()).length
+    if (aliveNeighbours === 0) {
+      return Cell.dead()
+    }
+    if (aliveNeighbours === 3) {
+      return Cell.alive()
+    }
+    if (aliveNeighbours > 3) {
+      return Cell.dead()
+    }
+    return this
+  }
 }

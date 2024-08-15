@@ -1,5 +1,4 @@
 import { Board } from "./Board.js"
-import { Cell } from "./Cell.js"
 
 export class GameOfLife {
   private constructor(private board: Board) {}
@@ -11,22 +10,8 @@ export class GameOfLife {
   nextGeneration() {
     this.board = this.board.map((cell, coordinate) => {
       const neighbours = this.board.getNeighbours(coordinate)
-      return this.getNextState(neighbours, cell)
+      return cell.getNextGeneration(neighbours)
     })
-  }
-
-  private getNextState(neighbors: Cell[], cell: Cell): Cell {
-    const aliveNeighbours = neighbors.filter((cell) => cell.isAlive()).length
-    if (aliveNeighbours === 0) {
-      return Cell.dead()
-    }
-    if (aliveNeighbours === 3) {
-      return Cell.alive()
-    }
-    if (aliveNeighbours > 3) {
-      return Cell.dead()
-    }
-    return cell
   }
 
   toString() {
