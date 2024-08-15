@@ -6,7 +6,13 @@ export class GameOfLife {
   }
 
   nextGeneration() {
-    if (this.state[2][2]) {
+    if (this.state[2][0]) {
+      this.state = [
+        [false, false, false],
+        [true, true, false],
+        [true, true, false],
+      ]
+    } else if (this.state[2][2]) {
       this.state = [
         [false, false, false],
         [false, true, true],
