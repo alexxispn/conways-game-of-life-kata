@@ -23,6 +23,10 @@ export class Board {
     return coordinates.getNeighbours().map((coordinates) => this.getCellAt(coordinates))
   }
 
+  map(fn: (cell: boolean, coordinates: Coordinates) => boolean) {
+    return new Board(this.state.map((row, y) => row.map((cell, x) => fn(cell, Coordinates.at(y, x)))))
+  }
+
   toString() {
     return this.state
       .map((cells) => cells.map((cell) => (cell ? "◽️" : "◼️")))
