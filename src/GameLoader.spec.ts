@@ -8,7 +8,7 @@ describe("GameLoader", () => {
     const gameLoader = new GameLoader()
     const gameOfLife = gameLoader.parse(input)
 
-    const expected = new GameOfLife([
+    const expected = GameOfLife.from([
       [false, false, false],
       [false, false, false],
       [false, false, false],
