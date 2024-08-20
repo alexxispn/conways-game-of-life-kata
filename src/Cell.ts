@@ -26,7 +26,7 @@ class DeadCell extends Cell {
   }
 
   toString(): string {
-    return "◼️"
+    return "⬜️"
   }
 
   getNextGeneration(neighbors: Cell[]): Cell {
@@ -44,7 +44,7 @@ class AliveCell extends Cell {
   }
 
   toString(): string {
-    return "◽️"
+    return "🔳"
   }
 
   getNextGeneration(neighbors: Cell[]): Cell {
