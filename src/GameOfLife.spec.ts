@@ -12,7 +12,7 @@ describe("GameOfLife", () => {
 
       const string = game.toString()
 
-      expect(string).toBe("◼️◼️◼️\n◼️◼️◼️\n◼️◼️◼️")
+      expect(string).toBe("⬜️⬜️⬜️\n⬜️⬜️⬜️\n⬜️⬜️⬜️")
     })
 
     it("prints all cells alive game with white", () => {
@@ -24,7 +24,7 @@ describe("GameOfLife", () => {
 
       const string = game.toString()
 
-      expect(string).toBe("◽️◽️◽️\n◽️◽️◽️\n◽️◽️◽️")
+      expect(string).toBe("🔳🔳🔳\n🔳🔳🔳\n🔳🔳🔳")
     })
 
     it("prints mixed cells alive game with their respective colors", () => {
@@ -36,7 +36,7 @@ describe("GameOfLife", () => {
 
       const string = game.toString()
 
-      expect(string).toBe("◼️◽️◽️\n◽️◼️◽️\n◽️◽️◼️")
+      expect(string).toBe("⬜️🔳🔳\n🔳⬜️🔳\n🔳🔳⬜️")
     })
   })
 
