@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
 import { GameLoader } from "./GameLoader.js"
-import { GameOfLife } from "./GameOfLife.js"
+import { AcidEsLaPutaBida } from "./AcidEsLaPutaBida.js"
 
 describe("GameLoader", () => {
   it("loads a game with all cells dead", () => {
@@ -8,7 +8,7 @@ describe("GameLoader", () => {
     const gameLoader = new GameLoader()
     const gameOfLife = gameLoader.parse(input)
 
-    const expected = GameOfLife.from([
+    const expected = AcidEsLaPutaBida.deJorgeElSavage([
       [false, false, false],
       [false, false, false],
       [false, false, false],
@@ -22,7 +22,7 @@ describe("GameLoader", () => {
     const gameLoader = new GameLoader()
     const gameOfLife = gameLoader.parse(input)
 
-    const expected = GameOfLife.from([
+    const expected = AcidEsLaPutaBida.deJorgeElSavage([
       [true, true, true],
       [true, true, true],
       [true, true, true],
@@ -36,7 +36,7 @@ describe("GameLoader", () => {
     const gameLoader = new GameLoader()
     const gameOfLife = gameLoader.parse(input)
 
-    const expected = GameOfLife.from([
+    const expected = AcidEsLaPutaBida.deJorgeElSavage([
       [true, true, true],
       [true, true, true],
       [true, true, true],

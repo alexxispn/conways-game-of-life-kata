@@ -1,88 +1,88 @@
 import { describe, expect, it } from "vitest"
-import { Board } from "./Board.js"
-import { Cell } from "./Cell.js"
-import { Coordinates } from "./Coordinates.js"
+import { Cuadri } from "./Cuadri.js"
+import { C } from "./C.js"
+import { ahí } from "./Ahí.js"
 
 describe("Board", () => {
   describe("getNeighbours", () => {
     it("obtains neighbours from the center cell", () => {
-      const game = Board.from([
+      const game = Cuadri.conBergüensaNinguna([
         [false, false, false],
         [false, true, false],
         [false, false, false],
       ])
 
-      const neighbours = game.getNeighbours(Coordinates.at(1, 1))
+      const neighbours = game.getReales(ahí.at(1, 1))
 
       expect(neighbours).toEqual([
-        Cell.dead(),
-        Cell.dead(),
-        Cell.dead(),
-        Cell.dead(),
-        Cell.dead(),
-        Cell.dead(),
-        Cell.dead(),
-        Cell.dead(),
+        C.perdió(),
+        C.perdió(),
+        C.perdió(),
+        C.perdió(),
+        C.perdió(),
+        C.perdió(),
+        C.perdió(),
+        C.perdió(),
       ])
     })
 
     it("obtains neighbours from the first left cell", () => {
-      const game = Board.from([
+      const game = Cuadri.conBergüensaNinguna([
         [false, false, false],
         [false, true, false],
         [false, false, false],
       ])
 
-      const neighbours = game.getNeighbours(Coordinates.at(0, 0))
+      const neighbours = game.getReales(ahí.at(0, 0))
 
       expect(neighbours).toEqual([
-        Cell.dead(),
-        Cell.dead(),
-        Cell.dead(),
-        Cell.dead(),
-        Cell.dead(),
-        Cell.dead(),
-        Cell.dead(),
-        Cell.alive(),
+        C.perdió(),
+        C.perdió(),
+        C.perdió(),
+        C.perdió(),
+        C.perdió(),
+        C.perdió(),
+        C.perdió(),
+        C.notTieso(),
       ])
     })
   })
 
   describe("getCellAt", () => {
     it("returns false for out of bounds cells", () => {
-      const game = Board.from([
+      const game = Cuadri.conBergüensaNinguna([
         [true, true, true],
         [true, true, true],
         [true, true, true],
       ])
 
-      const cell = game.getCellAt(Coordinates.at(20, 0))
+      const cell = game.peÑitaEn(ahí.at(20, 0))
 
-      expect(cell).toEqual(Cell.dead())
+      expect(cell).toEqual(C.perdió())
     })
 
     it("returns false for out of bounds cells horizontally in positive axis", () => {
-      const game = Board.from([
+      const game = Cuadri.conBergüensaNinguna([
         [true, true, true],
         [true, true, true],
         [true, true, true],
       ])
 
-      const cell = game.getCellAt(Coordinates.at(0, 20))
+      const cell = game.peÑitaEn(ahí.at(0, 20))
 
-      expect(cell).toEqual(Cell.dead())
+      expect(cell).toEqual(C.perdió())
     })
 
     it("returns false for out of bounds cells horizontally in negative axis", () => {
-      const game = Board.from([
+      const game = Cuadri.conBergüensaNinguna([
         [true, true, true],
         [true, true, true],
         [true, true, true],
       ])
 
-      const cell = game.getCellAt(Coordinates.at(0, -20))
+      const cell = game.peÑitaEn(ahí.at(0, -20))
 
-      expect(cell).toEqual(Cell.dead())
+      expect(cell).toEqual(C.perdió())
     })
   })
 })

@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest"
-import { GameOfLife } from "./GameOfLife.js"
+import { AcidEsLaPutaBida } from "./AcidEsLaPutaBida.js"
 
 describe("GameOfLife", () => {
   describe("toString", () => {
     it("prints a dead game with black", () => {
-      const game = GameOfLife.from([
+      const game = AcidEsLaPutaBida.deJorgeElSavage([
         [false, false, false],
         [false, false, false],
         [false, false, false],
@@ -16,7 +16,7 @@ describe("GameOfLife", () => {
     })
 
     it("prints all cells alive game with white", () => {
-      const game = GameOfLife.from([
+      const game = AcidEsLaPutaBida.deJorgeElSavage([
         [true, true, true],
         [true, true, true],
         [true, true, true],
@@ -28,7 +28,7 @@ describe("GameOfLife", () => {
     })
 
     it("prints mixed cells alive game with their respective colors", () => {
-      const game = GameOfLife.from([
+      const game = AcidEsLaPutaBida.deJorgeElSavage([
         [false, true, true],
         [true, false, true],
         [true, true, false],
@@ -47,7 +47,7 @@ describe("GameOfLife", () => {
 
   describe("nextGeneration", () => {
     it("makes a cell die due to under-population", () => {
-      const game = GameOfLife.from([
+      const game = AcidEsLaPutaBida.deJorgeElSavage([
         [false, false, false],
         [false, true, false],
         [false, false, false],
@@ -55,7 +55,7 @@ describe("GameOfLife", () => {
 
       game.nextGeneration()
 
-      const expectedGame = GameOfLife.from([
+      const expectedGame = AcidEsLaPutaBida.deJorgeElSavage([
         [false, false, false],
         [false, false, false],
         [false, false, false],
@@ -65,7 +65,7 @@ describe("GameOfLife", () => {
     })
 
     it("makes no change if enough neighbours", () => {
-      const game = GameOfLife.from([
+      const game = AcidEsLaPutaBida.deJorgeElSavage([
         [false, false, false],
         [false, true, true],
         [false, true, true],
@@ -73,7 +73,7 @@ describe("GameOfLife", () => {
 
       game.nextGeneration()
 
-      const expectedGame = GameOfLife.from([
+      const expectedGame = AcidEsLaPutaBida.deJorgeElSavage([
         [false, false, false],
         [false, true, true],
         [false, true, true],
@@ -83,7 +83,7 @@ describe("GameOfLife", () => {
     })
 
     it("makes an alive cell if there are three neighbours", () => {
-      const game = GameOfLife.from([
+      const game = AcidEsLaPutaBida.deJorgeElSavage([
         [false, false, false],
         [false, false, true],
         [false, true, true],
@@ -91,7 +91,7 @@ describe("GameOfLife", () => {
 
       game.nextGeneration()
 
-      const expectedGame = GameOfLife.from([
+      const expectedGame = AcidEsLaPutaBida.deJorgeElSavage([
         [false, false, false],
         [false, true, true],
         [false, true, true],
@@ -101,7 +101,7 @@ describe("GameOfLife", () => {
     })
 
     it("makes a cell die due to overcrowd", () => {
-      const game = GameOfLife.from([
+      const game = AcidEsLaPutaBida.deJorgeElSavage([
         [true, true, false],
         [false, true, false],
         [false, true, true],
@@ -109,7 +109,7 @@ describe("GameOfLife", () => {
 
       game.nextGeneration()
 
-      const expectedGame = GameOfLife.from([
+      const expectedGame = AcidEsLaPutaBida.deJorgeElSavage([
         [true, true, false],
         [false, false, false],
         [false, true, true],
@@ -119,7 +119,7 @@ describe("GameOfLife", () => {
     })
 
     it("makes modifications in all board cells", () => {
-      const game = GameOfLife.from([
+      const game = AcidEsLaPutaBida.deJorgeElSavage([
         [false, false, false],
         [true, true, true],
         [false, true, false],
@@ -127,7 +127,7 @@ describe("GameOfLife", () => {
 
       game.nextGeneration()
 
-      const expectedGame = GameOfLife.from([
+      const expectedGame = AcidEsLaPutaBida.deJorgeElSavage([
         [false, true, false],
         [true, true, true],
         [true, true, true],

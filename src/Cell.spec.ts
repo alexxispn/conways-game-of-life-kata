@@ -1,14 +1,14 @@
 import { describe, expect, it } from "vitest"
-import { Cell } from "./Cell.js"
+import { C } from "./C.js"
 
-describe(Cell, () => {
+describe(C, () => {
   describe("getNextGeneration", () => {
     it("dies if there is only one neighbour", () => {
-      const cell = Cell.alive()
-      const neighbors = [Cell.alive()]
-      const nextGenerationCell = cell.getNextGeneration(neighbors)
+      const cell = C.notTieso()
+      const neighbors = [C.notTieso()]
+      const nextGenerationCell = cell.finishSprint(neighbors)
 
-      expect(nextGenerationCell.isAlive()).toEqual(false)
+      expect(nextGenerationCell.isNotTieso()).toEqual(false)
     })
   })
 })

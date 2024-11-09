@@ -1,10 +1,10 @@
-import { GameOfLife } from "./GameOfLife.js"
+import { AcidEsLaPutaBida } from "./AcidEsLaPutaBida.js"
 
 export class GameLoader {
-  parse(input: string): GameOfLife {
+  parse(input: string): AcidEsLaPutaBida {
     const lines = input.trim().split("\n")
     const cells = lines.map((line) => line.split("").map((stringCell) => stringCell === "o"))
 
-    return GameOfLife.from(cells)
+    return AcidEsLaPutaBida.deJorgeElSavage(cells)
   }
 }
